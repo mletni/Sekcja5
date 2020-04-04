@@ -40,8 +40,8 @@ Sekcja5.bin \
 all: Sekcja5.elf secondary-outputs
 
 # Tool invocations
-Sekcja5.elf: $(OBJS) $(USER_OBJS) C:\Users\mletn\STM32CubeIDE\workspace_1.3.0\Sekcja5\STM32F030R8TX_FLASH.ld
-	arm-none-eabi-gcc -o "Sekcja5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Users\mletn\STM32CubeIDE\workspace_1.3.0\Sekcja5\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sekcja5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Sekcja5.elf: $(OBJS) $(USER_OBJS) C:\Project\Sekcja5\workspace_1.3.0\Sekcja5\STM32F030R8TX_FLASH.ld
+	arm-none-eabi-gcc -o "Sekcja5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0 -T"C:\Project\Sekcja5\workspace_1.3.0\Sekcja5\STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sekcja5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

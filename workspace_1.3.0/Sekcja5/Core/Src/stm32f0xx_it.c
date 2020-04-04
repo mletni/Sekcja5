@@ -43,7 +43,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-static __IO uint32_t TimingDelay;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -53,19 +53,17 @@ static __IO uint32_t TimingDelay;
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-void Delay(__IO uint32_t nTime)
-{
-  TimingDelay = nTime;
-
-  while(TimingDelay != 0);
-}
+uint32_t TimingDelay = 0;
 
 void TimingDelay_Decrement(void)
 {
   if (TimingDelay != 0x00)
   {
     TimingDelay--;
+    if(TimingDelay-1==0x00){
+    	BSP_LED_Off(LED_GREEN);
+    	BSP_LED_Off(LED_BLUE);
+    }
   }
 }
 /* USER CODE END 0 */
@@ -162,9 +160,7 @@ void EXTI0_1_IRQHandler(void)
   /* USER CODE BEGIN EXTI0_1_IRQn 0 */
 	BSP_LED_On(LED_BLUE);
 	BSP_LED_On(LED_GREEN);
-	Delay(1000);
-	BSP_LED_Off(LED_BLUE);
-	BSP_LED_Off(LED_GREEN);
+	TimingDelay = 1001;
   /* USER CODE END EXTI0_1_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_1_IRQn 1 */
